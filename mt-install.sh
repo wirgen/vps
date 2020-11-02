@@ -38,8 +38,10 @@ systemctl enable mtproto-proxy
 
 cp -f mt-update.sh /etc/cron.daily/mt-update
 
+qrencode -o mt.png "tg://proxy?server=$IP&port=$PORT&secret=$SECRET"
 qrencode -t ansiutf8 "tg://proxy?server=$IP&port=$PORT&secret=$SECRET"
 echo "With DD in secret"
+qrencode -o mtdd.png "tg://proxy?server=$IP&port=$PORT&secret=dd$SECRET"
 qrencode -t ansiutf8 "tg://proxy?server=$IP&port=$PORT&secret=dd$SECRET"
 echo "IP: $IP"
 echo "PORT: $PORT"
