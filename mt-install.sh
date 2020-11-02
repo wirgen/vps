@@ -1,7 +1,9 @@
 #!/bin/bash
 
 apt update
-apt install -y git curl build-essential libssl-dev zlib1g-dev
+apt install -y git curl build-essential libssl-dev zlib1g-dev qrencode
+
+DIR=$(pwd)
 
 rm -rf MTProxy
 git clone https://github.com/TelegramMessenger/MTProxy.git
@@ -35,6 +37,8 @@ EOF
 systemctl daemon-reload
 systemctl start mtproto-proxy
 systemctl enable mtproto-proxy
+
+cd "$DIR"
 
 cp -f mt-update.sh /etc/cron.daily/mt-update
 
