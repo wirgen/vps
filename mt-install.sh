@@ -21,7 +21,7 @@ curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf
 
 IP=$(wget -qO- ipinfo.io/ip)
 PORT=8443
-SECRET=$(head -c 16 /dev/urandom | xxd -ps)
+SECRET=$(head -c 32 /dev/urandom | xxd -ps)
 
 cat > "/etc/systemd/system/mtproto-proxy.service" << EOF
 [Unit]
