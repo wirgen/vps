@@ -192,7 +192,7 @@ EOF
 systemctl restart nginx
 systemctl enable shadowsocks-libev.service && systemctl restart shadowsocks-libev
 
-iptables -A INPUT -p tcp --dport 80 -j REJECT
+iptables -A INPUT -p tcp --dport 80 -j DROP
 iptables-save
 
 cd $DIR
