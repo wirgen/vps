@@ -3,6 +3,8 @@
 apt update
 apt install -y git curl build-essential libssl-dev zlib1g-dev qrencode
 
+PORT=8443
+
 DIR=$(pwd)
 
 rm -rf MTProxy
@@ -20,8 +22,7 @@ curl -s https://core.telegram.org/getProxySecret -o proxy-secret
 curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf
 
 IP=$(wget -qO- ipinfo.io/ip)
-PORT=8443
-SECRET=$(head -c 32 /dev/urandom | xxd -ps -c 32)
+SECRET=$(head -c 16 /dev/urandom | xxd -ps)
 
 cat > "/etc/systemd/system/mtproto-proxy.service" << EOF
 [Unit]
@@ -38,9 +39,9 @@ systemctl daemon-reload
 systemctl start mtproto-proxy
 systemctl enable mtproto-proxy
 
-cd "$DIR"
+cd $DIR
 
-cp -f mt-update.sh /etc/cron.daily/mt-update
+cp -f mt-update.sh /etc/cron.daily/
 
 qrencode -o mt.png "tg://proxy?server=$IP&port=$PORT&secret=$SECRET"
 qrencode -t ansiutf8 "tg://proxy?server=$IP&port=$PORT&secret=$SECRET"
