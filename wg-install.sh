@@ -4,7 +4,7 @@ apt update
 apt install -y wireguard-tools mawk grep iproute2 qrencode
 
 PORT=3785
-DNS="1.1.1.1"
+DNS="8.8.8.8"
 MTU=1500
 
 rm /etc/wireguard/wghub.conf
