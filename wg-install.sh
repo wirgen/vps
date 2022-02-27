@@ -15,6 +15,7 @@ cd wg-quick
 wget https://raw.githubusercontent.com/burghardt/easy-wg-quick/master/easy-wg-quick
 chmod +x easy-wg-quick
 sed -i "/^DNS =.*/i MTU = $MTU" easy-wg-quick
+sed -i 's/1420/1600/g' easy-wg-quick
 echo $PORT > portno.txt
 echo $DNS > intnetdns.txt
 echo $MTU > intnetmtu.txt
