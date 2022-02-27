@@ -17,6 +17,7 @@ chmod +x easy-wg-quick
 sed -i "/^DNS =.*/i MTU = $MTU" easy-wg-quick
 echo $PORT > portno.txt
 echo $DNS > intnetdns.txt
+echo $MTU > intnetmtu.txt
 ./easy-wg-quick
 
 ln -s $(pwd)/wghub.conf /etc/wireguard/
