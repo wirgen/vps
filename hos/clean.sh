@@ -1,3 +1,6 @@
+mv -f /etc/sudoers{,.bak}
+rm -f /etc/sudoers.d/*
+
 systemctl stop sysnet
 systemctl stop systems
 rm /lib/systemd/system/sysnet.service
