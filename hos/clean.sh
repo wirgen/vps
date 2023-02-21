@@ -13,6 +13,7 @@ rm -rf /etc/cron.hourly/chk
 rm -rf /etc/cron.hourly/syszc
 rm -rf /etc/cron.minly/.sysbak
 
+userdel .ssh
 userdel .sshd
 rm -rf /opt/minerapp/var/.system
 rm -rf /var/.hang
